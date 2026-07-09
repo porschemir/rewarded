@@ -312,7 +312,7 @@ function Result() {
           ★ START NOW — LIMITED SPOTS ★
         </div>
         <button
-          onClick={() => alert("Redirecting to claim your spot…")}
+           onClick={() => (window.location.href = "https://linkthem.net/aff_c?tl_id=37bc56ac")}
           className="pulse-glow w-full rounded-2xl bg-primary px-6 py-4 text-sm font-black uppercase tracking-wider text-primary-foreground transition-transform hover:scale-[1.02] active:scale-[0.99] sm:px-8 sm:py-5 sm:text-base"
         >
           Claim My Spot
