@@ -316,7 +316,7 @@ function Result() {
           ★ START NOW — LIMITED SPOTS ★
         </div>
         <button
-          onClick={() => (window.location.href = "https://linkthem.net/aff_c?tl_id=37bc56ac&source=spanish1")}
+          onClick={() => (window.location.href = "https://linkthem.net/aff_c?tl_id=37bc56ac")}
           className="pulse-glow w-full rounded-2xl bg-primary px-6 py-4 text-sm font-black uppercase tracking-wider text-primary-foreground transition-transform hover:scale-[1.02] active:scale-[0.99] sm:px-8 sm:py-5 sm:text-base"
         >
           Claim My Spot
@@ -328,13 +328,49 @@ function Result() {
 }
 
 function StartScreen({ onStart }: { onStart: () => void }) {
+  const handleStart = () => {
+    if (typeof window === "undefined") {
+      onStart();
+      return;
+    }
+
+    const ua = navigator.userAgent || "";
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    const isAndroid = /Android/i.test(ua);
+    const inApp =
+      /TikTok|musical_ly|Bytedance|Instagram|FBAN|FBAV|FB_IAB|Line|Snapchat|Twitter|LinkedIn|Pinterest|WeChat|MicroMessenger/i.test(
+        ua,
+      );
+
+    const currentUrl = window.location.href;
+
+    if (inApp && isIOS) {
+      // iOS: try to bounce to Safari
+      const safariUrl = currentUrl.replace(/^https?:\/\//, "x-safari-https://");
+      window.location.href = safariUrl;
+      setTimeout(() => onStart(), 800);
+      return;
+    }
+
+    if (inApp && isAndroid) {
+      // Android: intent to Chrome
+      const noScheme = currentUrl.replace(/^https?:\/\//, "");
+      const intentUrl = `intent://${noScheme}#Intent;scheme=https;package=com.android.chrome;end`;
+      window.location.href = intentUrl;
+      setTimeout(() => onStart(), 800);
+      return;
+    }
+
+    onStart();
+  };
+
   return (
     <section className="slide-up flex flex-col items-center justify-center py-10 text-center sm:py-14">
       <p className="mb-8 text-sm font-semibold text-foreground sm:text-base">
         Click here to get started
       </p>
       <button
-        onClick={onStart}
+        onClick={handleStart}
         className="pulse-glow w-full rounded-2xl bg-primary px-6 py-4 text-sm font-black uppercase tracking-wider text-primary-foreground transition-transform hover:scale-[1.02] active:scale-[0.99] sm:text-base"
       >
         Start
