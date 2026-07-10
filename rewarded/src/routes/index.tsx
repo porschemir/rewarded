@@ -77,10 +77,10 @@ const QUESTIONS: Question[] = [
 
 const LOADER_MESSAGES = ["Analyzing profile...", "Matching partner tiers...", "Optimizing reward multipliers..."];
 
-type Stage = "quiz" | "loading" | "result";
+type Stage = "start" | "quiz" | "loading" | "result";
 
 function Index() {
-  const [stage, setStage] = useState<Stage>("quiz");
+  const [stage, setStage] = useState<Stage>("start");
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
   const [animKey, setAnimKey] = useState(0);
@@ -119,16 +119,18 @@ function Index() {
   return (
     <main className="min-h-screen w-full px-4 py-8 sm:py-12">
       <div className="mx-auto w-full max-w-[420px]">
-        {stage === "quiz" && (
+        {stage !== "result" && (
           <div className="mb-6 flex items-center justify-center gap-3 sm:mb-8">
             <img
               src={logo}
               alt="Rewarded Play logo"
               className="drop-gold h-9 w-9 shrink-0 object-contain sm:h-11 sm:w-11"
             />
-            <span className="text-lg font-black italic tracking-tight text-secondary text-glow sm:text-xl">
-              rewarded <span className="text-foreground">play</span>
-            </span>
+            {stage !== "start" && (
+              <span className="text-lg font-black italic tracking-tight text-secondary text-glow sm:text-xl">
+                rewarded <span className="text-foreground">play</span>
+              </span>
+            )}
           </div>
         )}
 
@@ -141,23 +143,25 @@ function Index() {
             </div>
           )}
 
-          <header className="flex items-center justify-between">
-            {stage === "quiz" && step > 0 ? (
-              <button
-                onClick={handleBack}
-                className="flex items-center gap-1.5 text-[10px] font-bold text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <span className="text-sm">←</span> Back
-              </button>
-            ) : (
-              <div className="h-4 w-4" />
-            )}
-            {stage === "quiz" && (
+          {stage === "quiz" && (
+            <header className="flex items-center justify-between">
+              {step > 0 ? (
+                <button
+                  onClick={handleBack}
+                  className="flex items-center gap-1.5 text-[10px] font-bold text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <span className="text-sm">←</span> Back
+                </button>
+              ) : (
+                <div className="h-4 w-4" />
+              )}
               <span className="text-[10px] font-semibold text-muted-foreground">
                 {step + 1} / {QUESTIONS.length}
               </span>
-            )}
-          </header>
+            </header>
+          )}
+
+          {stage === "start" && <StartScreen onStart={() => setStage("quiz")} />}
 
           {stage === "quiz" && (
             <QuizStep
@@ -312,13 +316,29 @@ function Result() {
           ★ START NOW — LIMITED SPOTS ★
         </div>
         <button
-           onClick={() => (window.location.href = "https://linkthem.net/aff_c?tl_id=37bc56ac")}
+          onClick={() => (window.location.href = "https://linkthem.net/aff_c?tl_id=37bc56ac")}
           className="pulse-glow w-full rounded-2xl bg-primary px-6 py-4 text-sm font-black uppercase tracking-wider text-primary-foreground transition-transform hover:scale-[1.02] active:scale-[0.99] sm:px-8 sm:py-5 sm:text-base"
         >
           Claim My Spot
         </button>
         <p className="mt-3 text-[10px] text-muted-foreground">No credit card required · Instant activation</p>
       </div>
+    </section>
+  );
+}
+
+function StartScreen({ onStart }: { onStart: () => void }) {
+  return (
+    <section className="slide-up flex flex-col items-center justify-center py-10 text-center sm:py-14">
+      <p className="mb-8 text-sm font-semibold text-foreground sm:text-base">
+        Click here to get started
+      </p>
+      <button
+        onClick={onStart}
+        className="pulse-glow w-full rounded-2xl bg-primary px-6 py-4 text-sm font-black uppercase tracking-wider text-primary-foreground transition-transform hover:scale-[1.02] active:scale-[0.99] sm:text-base"
+      >
+        Start
+      </button>
     </section>
   );
 }
