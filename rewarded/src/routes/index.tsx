@@ -128,7 +128,7 @@ function Index() {
             />
             {stage !== "start" && (
               <span className="text-lg font-black italic tracking-tight text-secondary text-glow sm:text-xl">
-                rewarded <span className="text-foreground">play</span>
+                Reco <span className="text-foreground">Social</span>
               </span>
             )}
           </div>
