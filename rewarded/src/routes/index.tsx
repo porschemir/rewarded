@@ -262,47 +262,11 @@ function Loading({ message }: { message: string }) {
 function Result() {
   return (
     <section className="slide-up">
-      <div className="mb-0.5 inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-2 py-0.5 text-[9px] font-bold tracking-widest text-primary">
-        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-        ESTIMATE READY
-      </div>
+      
       <h1 className="mb-2 text-lg font-black sm:text-2xl">
-        Here's what you can <span className="text-gradient">earn</span>
+        Start <span className="text-gradient">Now</span>
       </h1>
-      <p className="mb-6 text-xs text-muted-foreground sm:mb-8">
-        Based on your quiz responses and current partner tiers.
-      </p>
-
-      <div className="mb-4 rounded-2xl border border-border bg-card p-5 sm:rounded-3xl sm:p-6">
-        <div className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground">YOUR ESTIMATE</div>
-        <div className="mt-2 flex items-baseline gap-2">
-          <span className="text-3xl font-black text-foreground sm:text-5xl">$20–$40</span>
-          <span className="text-xs font-semibold text-muted-foreground">daily</span>
-        </div>
-      </div>
-
-      <div
-        className="relative mb-4 overflow-hidden rounded-2xl border border-primary/50 p-5 sm:mb-6 sm:rounded-3xl sm:p-6"
-        style={{
-          background: "var(--gradient-card)",
-          boxShadow: "var(--shadow-neon)",
-        }}
-      >
-        <div className="absolute inset-x-0 top-0 h-px shimmer" />
-        <div className="mb-3 flex items-start justify-between gap-3">
-          <div className="text-[10px] font-black uppercase tracking-widest text-primary">
-            🚀 You're eligible for boosted earnings daily
-          </div>
-          <span className="shrink-0 rounded-full bg-destructive px-2 py-0.5 text-[9px] font-black tracking-widest text-destructive-foreground animate-pulse sm:px-2.5 sm:py-1">
-            LIMITED TIME
-          </span>
-        </div>
-        <div className="flex items-baseline gap-2">
-          <span className="text-3xl font-black text-gradient sm:text-5xl">$40–$50</span>
-          <span className="text-xs font-semibold text-muted-foreground">daily</span>
-        </div>
-      </div>
-
+     
       
 
       <div className="text-center">
