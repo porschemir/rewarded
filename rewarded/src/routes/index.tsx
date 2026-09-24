@@ -128,7 +128,7 @@ function Index() {
             />
             {stage !== "start" && (
               <span className="text-lg font-black italic tracking-tight text-secondary text-glow sm:text-xl">
-                Reco <span className="text-foreground">Social</span>
+                Free <span className="text-foreground">Cash</span>
               </span>
             )}
           </div>
@@ -276,7 +276,7 @@ function Result() {
       <div className="mb-4 rounded-2xl border border-border bg-card p-5 sm:rounded-3xl sm:p-6">
         <div className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground">YOUR ESTIMATE</div>
         <div className="mt-2 flex items-baseline gap-2">
-          <span className="text-3xl font-black text-foreground sm:text-5xl">$58–$184</span>
+          <span className="text-3xl font-black text-foreground sm:text-5xl">$20–$40</span>
           <span className="text-xs font-semibold text-muted-foreground">daily</span>
         </div>
       </div>
@@ -298,25 +298,19 @@ function Result() {
           </span>
         </div>
         <div className="flex items-baseline gap-2">
-          <span className="text-3xl font-black text-gradient sm:text-5xl">$238–$416</span>
+          <span className="text-3xl font-black text-gradient sm:text-5xl">$40–$50</span>
           <span className="text-xs font-semibold text-muted-foreground">daily</span>
         </div>
       </div>
 
-      <div className="mb-6 rounded-2xl border border-border bg-card/60 p-4 sm:mb-8 sm:p-5">
-        <div className="mb-2 text-[10px] font-bold tracking-[0.2em] text-muted-foreground">HOW TO PARTICIPATE</div>
-        <p className="text-xs leading-relaxed text-foreground sm:text-sm">
-          If you wish to participate, simply spend <span className="font-black text-primary">$10</span> on an app of
-          your choice, make <span className="font-black text-secondary">$100</span> back.
-        </p>
-      </div>
+      
 
       <div className="text-center">
         <div className="mb-2 text-[10px] font-black tracking-[0.3em] text-secondary sm:mb-3">
-          ★ START NOW — LIMITED SPOTS ★
+          ★ START NOW ★
         </div>
         <button
-          onClick={() => (window.location.href = "https://taprkr.com/r/eyJ0IjoicmVjb3NvY2lhbC1jcHIiLCJ0aWQiOiI3ZjNkMGY2NDRkNGRjOTNiMjFhOSIsInRzIjoxNzg5ODM1NTk0NTAxfQ")}
+          onClick={() => (window.location.href = "#")}
           className="pulse-glow w-full rounded-2xl bg-primary px-6 py-4 text-sm font-black uppercase tracking-wider text-primary-foreground transition-transform hover:scale-[1.02] active:scale-[0.99] sm:px-8 sm:py-5 sm:text-base"
         >
           Claim My Spot
